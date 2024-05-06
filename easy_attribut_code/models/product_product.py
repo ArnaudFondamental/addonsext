@@ -4,10 +4,14 @@ _logger = logging.getLogger(__name__)
 
 class ProductProduct(models.Model):
     _inherit = "product.product"
+    product_template_variant_value_ids = fields.Many2many('product.template.attribute.value',
+                                                          relation='product_variant_combination',
+                                                          domain=[('attribute_line_id.value_count', '>', 0)],
+                                                          string="Variant Values", ondelete='restrict')
 
     @api.model_create_multi
     def create(self, vals_list):
-        _logger.info("ca passe ici")
+        _logger.info("------ CREATE Product_product CA PASSE ICI  -----")
         _logger.info(type(vals_list))
         _logger.info(vals_list)
         for val_list in vals_list:
@@ -37,3 +41,11 @@ class ProductProduct(models.Model):
         # `_get_variant_id_for_combination` depends on existing variants
         self.env.registry.clear_cache()
         return products
+
+
+
+    def write(self, values):
+        _logger.info("------ WRITE Product_product CA PASSE ICI  -----")
+        _logger.info(values)
+        res = super(ProductProduct, self).write(values)
+        return res

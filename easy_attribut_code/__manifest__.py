@@ -16,6 +16,7 @@ TODO
     'website': 'https://www.fondamental-corporate.com/',
     'depends': ['stock'],
     'data': ['views/product_attribute_code_view.xml',
+             'views/product_product_view.xml',
              'views/product_template_code_view.xml'],
     'installable': True,
     'application': True,

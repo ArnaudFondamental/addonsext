@@ -6,6 +6,12 @@
             <field name="inherit_id" ref="product.product_attribute_view_form"/>
             <field name="arch" type="xml">
                 <data>
+                        <xpath expr="//notebook" position="after">
+                        <div class="oe_chatter">
+                                <field name="message_follower_ids" widget="mail_followers"/>
+                                <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </xpath>
                     <xpath expr="//field[@name='sequence']" position="after">
                         <field name="code"/>
                     </xpath>

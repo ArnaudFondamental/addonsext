@@ -22,7 +22,7 @@ class ProductProduct(models.Model):
                 _logger.info(" CODE ::: " + str(attribut.product_attribute_value_id.code))
                 res = res + str(attribut.product_attribute_value_id.code)
                 i = i + 1
-                if i == 1:
+                if i == self.env['ir.config_parameter'].sudo().get_param('easy_attribut_code.codepos'):
                     res += self.product_tmpl_id.code
             record.fg_ref = res
             record.default_code = res
